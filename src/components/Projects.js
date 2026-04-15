@@ -66,7 +66,13 @@ const projectList = [
         title: "PEZA Reports System",
         desc: "A secure online portal provided by CDEC for the Philippine Economic Zone Authority (PEZA). It serves as a central hub for registered enterprises to electronically manage, monitor, and submit import/export permits, zone transfer documents, and performance reports (eIPS, AEDS, eZTS).",
         tech: "Grails 1.2.5 | Java, MySQL, API, Auth",
-        image: "/projects/Screenshot_2.png"
+    },
+    {
+        url: "",
+        title: "Data Processor",
+        desc: "A Spring Boot service that processes customs, logistics, and trade data files from multiple clients, similar to the CData Arc framework. It supports inbound (file to database) and outbound (database to file) data flows with JSON and XML formats.",
+        tech: "Spring Boot | Java, JSON, XML",
+        image: "/projects/Screenshot_7.png"
     }
 ];
 
@@ -76,22 +82,25 @@ export default function Projects() {
             <h2 className="section-title">Recent Projects</h2>
 
             <div className="projects-grid">
-                {projectList.map((project, i) => (
-                    <motion.a
-                        key={i}
-                        href={
-                            project.url.startsWith("https")
-                                ? project.url
-                                : "https://" + project.url.replace(/^https?:\/\//, "")
-                        }
-                        target="_blank"
-                        rel="noopener noreferrer nofollow"
-                        className="project-card"
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        whileHover={{ scale: 1.03 }}
-                        transition={{ duration: 0.4 }}
-                    >
+                {projectList.map((project, i) => {
+                    const hasUrl = project.url && project.url !== "#";
+                    const projectHref = hasUrl 
+                        ? (project.url.startsWith("http") ? project.url : "https://" + project.url.replace(/^https?:\/\//, ""))
+                        : undefined;
+
+                    return (
+                        <motion.a
+                            key={i}
+                            href={projectHref}
+                            target={hasUrl ? "_blank" : undefined}
+                            rel={hasUrl ? "noopener noreferrer nofollow" : undefined}
+                            className="project-card"
+                            style={{ cursor: hasUrl ? "pointer" : "default" }}
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            whileHover={{ scale: 1.03 }}
+                            transition={{ duration: 0.4 }}
+                        >
                         <div className="project-image">
                             <Image
                                 src={project.image}
@@ -110,7 +119,8 @@ export default function Projects() {
                             <strong>Tech:</strong> {project.tech}
                         </div>
                     </motion.a>
-                ))}
+                );
+            })}
             </div>
         </section>
     );
