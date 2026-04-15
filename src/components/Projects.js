@@ -66,6 +66,7 @@ const projectList = [
         title: "PEZA Reports System",
         desc: "A secure online portal provided by CDEC for the Philippine Economic Zone Authority (PEZA). It serves as a central hub for registered enterprises to electronically manage, monitor, and submit import/export permits, zone transfer documents, and performance reports (eIPS, AEDS, eZTS).",
         tech: "Grails 1.2.5 | Java, MySQL, API, Auth",
+        image: "/projects/Screenshot_2.png"
     },
     {
         url: "",
@@ -84,7 +85,7 @@ export default function Projects() {
             <div className="projects-grid">
                 {projectList.map((project, i) => {
                     const hasUrl = project.url && project.url !== "#";
-                    const projectHref = hasUrl 
+                    const projectHref = hasUrl
                         ? (project.url.startsWith("http") ? project.url : "https://" + project.url.replace(/^https?:\/\//, ""))
                         : undefined;
 
@@ -101,26 +102,26 @@ export default function Projects() {
                             whileHover={{ scale: 1.03 }}
                             transition={{ duration: 0.4 }}
                         >
-                        <div className="project-image">
-                            <Image
-                                src={project.image}
-                                alt={project.title}
-                                fill
-                                sizes="100%"
-                                style={{ objectFit: "cover" }}
-                            />
-                        </div>
+                            <div className="project-image">
+                                <Image
+                                    src={project.image}
+                                    alt={project.title}
+                                    fill
+                                    sizes="100%"
+                                    style={{ objectFit: "cover" }}
+                                />
+                            </div>
 
-                        <h3 className="project-title">{project.title}</h3>
+                            <h3 className="project-title">{project.title}</h3>
 
-                        <p className="project-desc">{project.desc}</p>
+                            <p className="project-desc">{project.desc}</p>
 
-                        <div className="project-tech">
-                            <strong>Tech:</strong> {project.tech}
-                        </div>
-                    </motion.a>
-                );
-            })}
+                            <div className="project-tech">
+                                <strong>Tech:</strong> {project.tech}
+                            </div>
+                        </motion.a>
+                    );
+                })}
             </div>
         </section>
     );
