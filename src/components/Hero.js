@@ -69,8 +69,8 @@ export default function Hero() {
                 </div>
 
                 <a
-                    href="/JohnreyAlcantaraCV_2026_04_17.pdf"
-                    download="JohnreyAlcantaraCV_2026_04_17.pdf"
+                    href="/JohnreyAlcantara_CV_20260601.pdf"
+                    download="JohnreyAlcantara_CV_20260601.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="resume-btn"
